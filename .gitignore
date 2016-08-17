@@ -39,7 +39,3 @@ pids
 # Build Folders
 coverage/
 npm-debug.log*
-
-file.txt
-test.js
-scrap.txt

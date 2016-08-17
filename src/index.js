@@ -10,7 +10,7 @@ export const access = (path, mode) => (
       if (!e) return success()
       failure(e)
     }
-    fs.access(path, (mode || c), (mode ? c : undefined))
+    fs.access(path, mode, c)
   })
 )
 
@@ -35,7 +35,7 @@ export const appendFile = (file, data, options) => (
       if (!e) return success()
       failure(e)
     }
-    fs.appendFile(file, data, (options || c), (options ? c : undefined))
+    fs.appendFile(file, data, options, c)
   })
 )
 
@@ -418,7 +418,7 @@ export const mkdir = (path, mode) => (
       if (!e) return success()
       failure(e)
     }
-    fs.mkdir(path, (mode || c), (mode ? c : undefined))
+    fs.mkdir(path, mode, c)
   })
 )
 
@@ -467,7 +467,7 @@ export const open = (path, flags, mode) => (
       if (!e) return success(fd)
       failure(e)
     }
-    fs.open(path, flags, (mode || c), (mode ? c : undefined))
+    fs.open(path, flags, mode, c)
   })
 )
 
@@ -509,7 +509,7 @@ export const readdir = (path, options) => (
       if (!e) return success()
       failure(e)
     }
-    fs.read(path, (options || c), (options ? c : undefined))
+    fs.read(path, options, c)
   })
 )
 
@@ -527,7 +527,7 @@ export const readFile = (file, options) => (
       if (!e) return success(data)
       failure(e)
     }
-    fs.readFile(file, (options || c), (options ? c : undefined))
+    fs.readFile(file, options, c)
   })
 )
 
@@ -552,7 +552,7 @@ export const readlink = (path, options) => (
       if (!e) return success(linkString)
       failure(e)
     }
-    fs.readlink(path, (options || c), (options ? c : undefined))
+    fs.readlink(path, options, c)
   })
 )
 
@@ -577,7 +577,7 @@ export const realpath = (path, options) => (
       if (!e) return success(resolvedPath)
       failure(e)
     }
-    fs.realpath(path, (options || c), (options ? c : undefined))
+    fs.realpath(path, options, c)
   })
 )
 
@@ -667,7 +667,7 @@ export const symlink = (target, path, type) => (
       if (!e) return success()
       failure(e)
     }
-    fs.symlink(target, path, type || c, type ? c : undefined)
+    fs.symlink(target, path, type, c)
   })
 )
 
@@ -751,13 +751,13 @@ export const utimesSync = (path, atime, mtime) => (
 // fs.watch(filename[, options][, listener])
 
 export const watch = (filename, options, listener) => (
-  Promise.resolve(fs.watch(filename, options || listener, (options) ? listener : undefined))
+  Promise.resolve(fs.watch(filename, options, listener))
 )
 
 // fs.watchFile(filename[, options], listener)
 
 export const watchFile = (filename, options, listener) => (
-  Promise.resolve(fs.watchFile(filename, options || listener))
+  Promise.resolve(fs.watchFile(filename, options, listener))
 )
 
 // fs.write(fd, buffer, offset, length[, position], callback)
@@ -765,17 +765,14 @@ export const watchFile = (filename, options, listener) => (
 
 export const write = (fd, data, v1, v2, v3) => (
   new Promise((success, failure) => {
-    const b1 = isNaN(v1)
-    const b2 = isNaN(v2)
-    const b3 = isNaN(v3)
     const c = (e) => {
       if (!e) return success()
       failure(e)
     }
     if (data instanceof Buffer) {
-      fs.write(fd, data, v1, v2, (b3 ? v3 : c), (b3 ? c : undefined))
+      fs.write(fd, data, v1, v2, v3, c)
     } else {
-      fs.write(fd, data, (b1 ? v1 : b2 ? v2 : c), (b1 ? b2 ? v2 : c : b2 ? c : undefined))
+      fs.write(fd, data, v1, v2, c)
     }
   })
 )
@@ -789,7 +786,7 @@ export const writeFile = (file, data, options) => (
       if (!e) return success()
       failure(e)
     }
-    fs.writeFile(file, data, (options || c), (options ? c : undefined))
+    fs.writeFile(file, data, options, c)
   })
 )
 
@@ -809,13 +806,10 @@ export const writeFileSync = (file, data, options) => (
 
 export const writeSync = (fd, data, v1, v2, v3) => (
   new Promise((success, failure) => {
-    const b1 = isNaN(v1)
-    const b2 = isNaN(v2)
-    const b3 = isNaN(v3)
     if (data instanceof Buffer) {
-      fs.writeSync(fd, data, v1, v2, (b3 ? v3 : undefined))
+      fs.writeSync(fd, data, v1, v2, v3)
     } else {
-      fs.writeSync(fd, data, (b1 ? v1 : b2 ? v2 : undefined), (b1 ? b2 ? v2 : undefined : undefined))
+      fs.writeSync(fd, data, v1, v2)
     }
   })
 )
@@ -828,50 +822,3 @@ export const W_OK = fs.W_OK // Flag indicating that the file can be written by t
 export const X_OK = fs.X_OK // Flag indicating that the file can be executed by the calling process.
 
 export const constants = fs.constants
-
-/*
-// File Open Constants
-
-export const O_RDONLY = fs.O_RDONLY // Flag indicating to open a file for read-only access.
-export const O_WRONLY = fs.O_WRONLY // Flag indicating to open a file for write-only access.
-export const O_RDWR = fs.O_RDWR // Flag indicating to open a file for read-write access.
-export const O_CREAT = fs.O_CREAT // Flag indicating to create the file if it does not already exist.
-export const O_EXCL = fs.O_EXCL // Flag indicating that opening a file should fail if the O_CREAT flag is set and the file already exists.
-export const O_NOCTTY = fs.O_NOCTTY // Flag indicating that if path identifies a terminal device, opening the path shall not cause that terminal to become the controlling terminal for the process (if the process does not already have one).
-export const O_TRUNC = fs.O_TRUNC // Flag indicating that if the file exists and is a regular file, and the file is opened successfully for write access, its length shall be truncated to zero.
-export const O_APPEND = fs.O_APPEND // Flag indicating that data will be appended to the end of the file.
-export const O_DIRECTORY = fs.O_DIRECTORY // Flag indicating that the open should fail if the path is not a directory.
-export const O_NOATIME = fs.O_DIRECTORY // Flag indicating reading accesses to the file system will no longer result in an update to the atime information associated with the file. This flag is available on Linux operating systems only.
-export const O_NOFOLLOW = fs.O_NOFOLLOW // Flag indicating that the open should fail if the path is a symbolic link.
-export const O_SYNC = fs.O_SYNC // Flag indicating that the file is opened for synchronous I/O.
-export const O_SYMLINK = fs.O_SYMLINK // Flag indicating to open the symbolic link itself rather than the resource it is pointing to.
-export const O_DIRECT = fs.O_DIRECT // When set, an attempt will be made to minimize caching effects of file I/O.
-export const O_NONBLOCK = fs.O_NONBLOCK // Flag indicating to open the file in nonblocking mode when possible.
-
-// File Type Constants
-
-export const S_IFMT = fs.S_IFMT // Bit mask used to extract the file type code.
-export const S_IFREG = fs.S_IFREG // File type constant for a regular file.
-export const S_IFDIR = fs.S_IFDIR // File type constant for a directory.
-export const S_IFCHR = fs.S_IFCHR // File type constant for a character-oriented device file.
-export const S_IFBLK = fs.S_IFBLK // File type constant for a block-oriented device file.
-export const S_IFIFO = fs.S_IFIFO // File type constant for a FIFO/pipe.
-export const S_IFLNK = fs.S_IFLNK // File type constant for a symbolic link.
-export const S_IFSOCK = fs.S_IFSOCK // File type constant for a socket.
-
-// File Mode Constants
-
-export const S_IRWXU = fs.S_IRWXU // File mode indicating readable, writable and executable by owner.
-export const S_IRUSR = fs.S_IRUSR // File mode indicating readable by owner.
-export const S_IWUSR = fs.S_IWUSR // File mode indicating writable by owner.
-export const S_IXUSR = fs.S_IXUSR // File mode indicating executable by owner.
-export const S_IRWXG = fs.S_IRWXG // File mode indicating readable, writable and executable by group.
-export const S_IRGRP = fs.S_IRGRP // File mode indicating readable by group.
-export const S_IWGRP = fs.S_IWGRP // File mode indicating writable by group.
-export const S_IXGRP = fs.S_IXGRP // File mode indicating executable by group.
-export const S_IRWXO = fs.S_IRWXO // File mode indicating readable, writable and executable by others.
-export const S_IROTH = fs.S_IROTH // File mode indicating readable by others.
-export const S_IWOTH = fs.S_IWOTH // File mode indicating writable by others.
-export const S_IXOTH = fs.S_IXOTH // File mode indicating executable by others.
-*/
-
