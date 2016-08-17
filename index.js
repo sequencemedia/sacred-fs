@@ -1,3 +1,3 @@
 require('babel-register')({})
 
-module.exports = require('./sacred')
+module.exports = require('./lib')
