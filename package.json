@@ -1,5 +1,5 @@
 {
-  "name": "promise-fs",
+  "name": "sacred-fs",
   "version": "0.0.1",
   "description": "Promise interface to Node FS",
   "keywords": [ "promise", "fs", "node", "es6"],
