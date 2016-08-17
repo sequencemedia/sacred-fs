@@ -1,3 +1,3 @@
-require('babel-register')({})
+require('babel-register')({ ignore: /!(sacred-fs\/src)/ })
 
-module.exports = require('./lib')
+module.exports = require('./src')
