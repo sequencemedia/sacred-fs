@@ -6,11 +6,10 @@ import fs from 'fs'
 
 export const access = (path, mode) => (
   new Promise((success, failure) => {
-    const c = (e) => {
+    fs.access(path, mode, (e) => {
       if (!e) return success()
       failure(e)
-    }
-    fs.access(path, mode, c)
+    })
   })
 )
 
@@ -31,11 +30,10 @@ export const accessSync = (path, mode) => (
 
 export const appendFile = (file, data, options) => (
   new Promise((success, failure) => {
-    const c = (e) => {
+    fs.appendFile(file, data, options, (e) => {
       if (!e) return success()
       failure(e)
-    }
-    fs.appendFile(file, data, options, c)
+    })
   })
 )
 
@@ -414,11 +412,10 @@ export const lstatSync = (path) => (
 
 export const mkdir = (path, mode) => (
   new Promise((success, failure) => {
-    const c = (e) => {
+    fs.mkdir(path, mode, (e) => {
       if (!e) return success()
       failure(e)
-    }
-    fs.mkdir(path, mode, c)
+    })
   })
 )
 
@@ -463,11 +460,10 @@ export const mkdtempSync = (prefix) => (
 
 export const open = (path, flags, mode) => (
   new Promise((success, failure) => {
-    const c = (e, fd) => {
+    fs.open(path, flags, mode, (e, fd) => {
       if (!e) return success(fd)
       failure(e)
-    }
-    fs.open(path, flags, mode, c)
+    })
   })
 )
 
@@ -505,11 +501,10 @@ export const readSync = (fd, buffer, offset, length, position) => (
 
 export const readdir = (path, options) => (
   new Promise((success, failure) => {
-    const c = (e) => {
+    fs.read(path, options, (e) => {
       if (!e) return success()
       failure(e)
-    }
-    fs.read(path, options, c)
+    })
   })
 )
 
@@ -523,11 +518,10 @@ export const readdirSync = (path, options) => (
 
 export const readFile = (file, options) => (
   new Promise((success, failure) => {
-    const c = (e, data) => {
+    fs.readFile(file, options, (e, data) => {
       if (!e) return success(data)
       failure(e)
-    }
-    fs.readFile(file, options, c)
+    })
   })
 )
 
@@ -548,11 +542,10 @@ export const readFileSync = (file, options) => (
 
 export const readlink = (path, options) => (
   new Promise((success, failure) => {
-    const c = (e, linkString) => {
+    fs.readlink(path, options, (e, linkString) => {
       if (!e) return success(linkString)
       failure(e)
-    }
-    fs.readlink(path, options, c)
+    })
   })
 )
 
@@ -573,11 +566,10 @@ export const readlinkSync = (path, options) => (
 
 export const realpath = (path, options) => (
   new Promise((success, failure) => {
-    const c = (e, resolvedPath) => {
+    fs.realpath(path, options, (e, resolvedPath) => {
       if (!e) return success(resolvedPath)
       failure(e)
-    }
-    fs.realpath(path, options, c)
+    })
   })
 )
 
@@ -663,11 +655,10 @@ export const statSync = (path) => (
 
 export const symlink = (target, path, type) => (
   new Promise((success, failure) => {
-    const c = (e) => {
+    fs.symlink(target, path, type, (e) => {
       if (!e) return success()
       failure(e)
-    }
-    fs.symlink(target, path, type, c)
+    })
   })
 )
 
@@ -782,11 +773,10 @@ export const write = (fd, data, v1, v2, v3) => (
 
 export const writeFile = (file, data, options) => (
   new Promise((success, failure) => {
-    const c = (e) => {
+    fs.writeFile(file, data, options, (e) => {
       if (!e) return success()
       failure(e)
-    }
-    fs.writeFile(file, data, options, c)
+    })
   })
 )
 
