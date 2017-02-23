@@ -1,27 +1,22 @@
-/* eslint promise/param-names: 0 */
-
 import fs from 'fs'
 
 // fs.access(path[, mode], callback)
 
 export const access = (path, mode) => (
-  new Promise((success, failure) => {
-    fs.access(path, mode, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.access(path, mode, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.accessSync(path[, mode])
 
 export const accessSync = (path, mode) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.accessSync(path, mode))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -29,23 +24,20 @@ export const accessSync = (path, mode) => (
 // fs.appendFile(file, data[, options], callback)
 
 export const appendFile = (file, data, options) => (
-  new Promise((success, failure) => {
-    fs.appendFile(file, data, options, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.appendFile(file, data, options, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.appendFileSync(file, data[, options])
 
 export const appendFileSync = (file, data, options) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.appendFileSync(file, data, options))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -53,23 +45,20 @@ export const appendFileSync = (file, data, options) => (
 // fs.chmod(path, mode, callback)
 
 export const chmod = (path, mode) => (
-  new Promise((success, failure) => {
-    fs.chmod(path, mode, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.chmod(path, mode, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.chmodSync(path, mode)
 
 export const chmodSync = (path, mode) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.chmodSync(path, mode))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -77,23 +66,20 @@ export const chmodSync = (path, mode) => (
 // fs.chown(path, uid, gid, callback)
 
 export const chown = (path, uid, gid) => (
-  new Promise((success, failure) => {
-    fs.chown(path, uid, gid, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.chown(path, uid, gid, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.chownSync(path, uid, gid)
 
 export const chownSync = (path, uid, gid) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.chownSync(path, uid, gid))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -101,23 +87,20 @@ export const chownSync = (path, uid, gid) => (
 // fs.close(path, uid, gid, callback)
 
 export const close = (fd) => (
-  new Promise((success, failure) => {
-    fs.close(fd, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.close(fd, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.closeSync(path, uid, gid)
 
 export const closeSync = (fd) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.closeSync(fd))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -144,8 +127,8 @@ fs.constants
  *  Deprecated
  */
 export const exists = (path) => (
-  new Promise((success) => {
-    fs.exists(path, success)
+  new Promise((resolve) => {
+    fs.exists(path, resolve)
   })
 )
 
@@ -161,23 +144,20 @@ export const existsSync = (path) => (
 // fs.fchmod(fd, mode, callback)
 
 export const fchmod = (fd, mode) => (
-  new Promise((success, failure) => {
-    fs.fchmod(fd, mode, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.fchmod(fd, mode, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.fchmodSync(fd, mode)
 
 export const fchmodSync = (fd, mode) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.fchmodSync(fd, mode))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -185,23 +165,20 @@ export const fchmodSync = (fd, mode) => (
 // fs.fchown(fd, uid, gid, callback)
 
 export const fchown = (fd, uid, gid) => (
-  new Promise((success, failure) => {
-    fs.fchown(fd, uid, gid, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.fchown(fd, uid, gid, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.fchownSync(fd, uid, gid)
 
 export const fchownSync = (fd, uid, gid) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.fchownSync(fd, uid, gid))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -209,23 +186,20 @@ export const fchownSync = (fd, uid, gid) => (
 // fs.fdatasync(fd, callback)
 
 export const fdatasync = (fd) => (
-  new Promise((success, failure) => {
-    fs.fdatasync(fd, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.fdatasync(fd, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.fdatasyncSync(fd)
 
 export const fdatasyncSync = (fd) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.fdatasyncSync(fd))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -233,23 +207,20 @@ export const fdatasyncSync = (fd) => (
 // fs.fstat(fd, callback)
 
 export const fstat = (fd) => (
-  new Promise((success, failure) => {
-    fs.fstat(fd, (e, stats) => {
-      if (!e) return success(stats)
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.fstat(fd, (e, stats) => (!e) ? resolve(stats) : reject(e))
   })
 )
 
 // fs.fstatSync(fd)
 
 export const fstatSync = (fd) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.fstatSync(fd))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -257,23 +228,20 @@ export const fstatSync = (fd) => (
 // fs.fsync(fd, callback)
 
 export const fsync = (fd) => (
-  new Promise((success, failure) => {
-    fs.fsync(fd, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.fsync(fd, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.fsyncSync(fd)
 
 export const fsyncSync = (fd) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.fsyncSync(fd))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -281,23 +249,20 @@ export const fsyncSync = (fd) => (
 // fs.ftruncate(fd, len, callback)
 
 export const ftruncate = (fd, len) => (
-  new Promise((success, failure) => {
-    fs.ftruncate(fd, len, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.ftruncate(fd, len, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.ftruncateSync(fd, len)
 
 export const ftruncateSync = (fd, len) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.ftruncateSync(fd, len))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -305,11 +270,8 @@ export const ftruncateSync = (fd, len) => (
 // fs.futimes(fd, atime, mtime, callback)
 
 export const futimes = (fd, atime, mtime) => (
-  new Promise((success, failure) => {
-    fs.futimes(fd, atime, mtime, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.futimes(fd, atime, mtime, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
@@ -322,23 +284,20 @@ export const futimesSync = (fd, atime, mtime) => (
 // fs.lchmod(path, mode, callback)
 
 export const lchmod = (path, mode) => (
-  new Promise((success, failure) => {
-    fs.lchmod(path, mode, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.lchmod(path, mode, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.lchmodSync(path, mode)
 
 export const lchmodSync = (path, mode) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.lchmodSync(path, mode))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -346,23 +305,20 @@ export const lchmodSync = (path, mode) => (
 // fs.lchown(path, mode, callback)
 
 export const lchown = (path, uid, gid) => (
-  new Promise((success, failure) => {
-    fs.lchown(path, uid, gid, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.lchown(path, uid, gid, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.lchownSync(path, mode)
 
 export const lchownSync = (path, uid, gid) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.lchownSync(path, uid, gid))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -370,23 +326,20 @@ export const lchownSync = (path, uid, gid) => (
 // fs.link(srcpath, dstpath, callback)
 
 export const link = (srcpath, dstpath) => (
-  new Promise((success, failure) => {
-    fs.link(srcpath, dstpath, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.link(srcpath, dstpath, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.linkSync(srcpath, dstpath)
 
 export const linkSync = (srcpath, dstpath) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.linkSync(srcpath, dstpath))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -394,11 +347,8 @@ export const linkSync = (srcpath, dstpath) => (
 // fs.lstat(srcpath, dstpath, callback)
 
 export const lstat = (path) => (
-  new Promise((success, failure) => {
-    fs.lstat(path, (e, stats) => {
-      if (!e) return success(stats)
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.lstat(path, (e, stats) => (!e) ? resolve(stats) : reject(e))
   })
 )
 
@@ -411,23 +361,20 @@ export const lstatSync = (path) => (
 // fs.mkdir(path[, mode], callback)
 
 export const mkdir = (path, mode) => (
-  new Promise((success, failure) => {
-    fs.mkdir(path, mode, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.mkdir(path, mode, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.mkdirSync(path, mode)
 
 export const mkdirSync = (path, mode) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.mkdirSync(path, mode))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -435,23 +382,20 @@ export const mkdirSync = (path, mode) => (
 // fs.mkdtemp(prefix, callback)
 
 export const mkdtemp = (prefix) => (
-  new Promise((success, failure) => {
-    fs.mkdtemp(prefix, (e, folder) => {
-      if (!e) return success(folder)
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.mkdtemp(prefix, (e, folder) => (!e) ? resolve(folder) : reject(e))
   })
 )
 
 // fs.mkdtempSync(prefix)
 
 export const mkdtempSync = (prefix) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.mkdtempSync(prefix))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -459,23 +403,20 @@ export const mkdtempSync = (prefix) => (
 // fs.open(path, flags[, mode], callback)
 
 export const open = (path, flags, mode) => (
-  new Promise((success, failure) => {
-    fs.open(path, flags, mode, (e, fd) => {
-      if (!e) return success(fd)
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.open(path, flags, mode, (e, fd) => (!e) ? resolve(fd) : reject(e))
   })
 )
 
 // fs.openSync(path, flags[, mode])
 
 export const openSync = (path, flags, mode) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.openSync(path, flags, mode))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -483,11 +424,8 @@ export const openSync = (path, flags, mode) => (
 // fs.read(fd, buffer, offset, length, position)
 
 export const read = (fd, buffer, offset, length, position) => (
-  new Promise((success, failure) => {
-    fs.read(fd, buffer, offset, length, position, (e, bytesRead, buffer) => {
-      if (!e) return success({ bytesRead, buffer })
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.read(fd, buffer, offset, length, position, (e, bytesRead, buffer) => (!e) ? resolve({ bytesRead, buffer }) : reject(e))
   })
 )
 
@@ -500,11 +438,8 @@ export const readSync = (fd, buffer, offset, length, position) => (
 // fs.readdir(path[, options], callback)
 
 export const readdir = (path, options) => (
-  new Promise((success, failure) => {
-    fs.read(path, options, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.read(path, options, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
@@ -517,23 +452,20 @@ export const readdirSync = (path, options) => (
 // fs.readFile(file[, options])
 
 export const readFile = (file, options) => (
-  new Promise((success, failure) => {
-    fs.readFile(file, options, (e, data) => {
-      if (!e) return success(data)
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.readFile(file, options, (e, data) => (!e) ? resolve(data) : reject(e))
   })
 )
 
 // fs.readFileSync(file[, options])
 
 export const readFileSync = (file, options) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.readFileSync(file, options))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -541,23 +473,20 @@ export const readFileSync = (file, options) => (
 // fs.readlink(path[, options])
 
 export const readlink = (path, options) => (
-  new Promise((success, failure) => {
-    fs.readlink(path, options, (e, linkString) => {
-      if (!e) return success(linkString)
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.readlink(path, options, (e, linkString) => (!e) ? resolve(linkString) : reject(e))
   })
 )
 
 // fs.readlinkSync(path[, options])
 
 export const readlinkSync = (path, options) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.readlinkSync(path, options))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -565,23 +494,20 @@ export const readlinkSync = (path, options) => (
 // fs.realpath(path[, options])
 
 export const realpath = (path, options) => (
-  new Promise((success, failure) => {
-    fs.realpath(path, options, (e, resolvedPath) => {
-      if (!e) return success(resolvedPath)
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.realpath(path, options, (e, resolvedPath) => (!e) ? resolve(resolvedPath) : reject(e))
   })
 )
 
 // fs.realpathSync(path[, options])
 
 export const realpathSync = (path, options) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.realpathSync(path, options))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -589,23 +515,20 @@ export const realpathSync = (path, options) => (
 // fs.rename(oldPath, newPath)
 
 export const rename = (oldPath, newPath) => (
-  new Promise((success, failure) => {
-    fs.rename(oldPath, newPath, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.rename(oldPath, newPath, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.renameSync(oldPath, newPath)
 
 export const renameSync = (oldPath, newPath) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.renameSync(oldPath, newPath))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -613,23 +536,20 @@ export const renameSync = (oldPath, newPath) => (
 // fs.realpath(path)
 
 export const rmdir = (path) => (
-  new Promise((success, failure) => {
-    fs.rmdir(path, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.rmdir(path, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.rmdirSync(path)
 
 export const rmdirSync = (path) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.rmdirSync(path))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -637,11 +557,8 @@ export const rmdirSync = (path) => (
 // fs.stat(path)
 
 export const stat = (path) => (
-  new Promise((success, failure) => {
-    fs.stat(path, (e, stat) => {
-      if (!e) return success(stat)
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.stat(path, (e, stat) => (!e) ? resolve(stat) : reject(e))
   })
 )
 
@@ -654,11 +571,8 @@ export const statSync = (path) => (
 // fs.symlink(target, path[, type])
 
 export const symlink = (target, path, type) => (
-  new Promise((success, failure) => {
-    fs.symlink(target, path, type, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.symlink(target, path, type, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
@@ -671,23 +585,20 @@ export const symlinkSync = (target, path, type) => (
 // fs.truncate(path, len, callback)
 
 export const truncate = (path, len) => (
-  new Promise((success, failure) => {
-    fs.truncate(path, len, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.truncate(path, len, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.truncateSync(path, len)
 
 export const truncateSync = (path, len) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.truncateSync(path, len))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -695,23 +606,20 @@ export const truncateSync = (path, len) => (
 // fs.truncate(path, callback)
 
 export const unlink = (path) => (
-  new Promise((success, failure) => {
-    fs.unlink(path, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.unlink(path, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 // fs.unlinkSync(path)
 
 export const unlinkSync = (path) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.unlinkSync(path))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -725,11 +633,8 @@ export const unwatchFile = (filename, listener) => (
 // fs.utimes(path, atime, mtime, callback)
 
 export const utimes = (path, atime, mtime) => (
-  new Promise((success, failure) => {
-    fs.utimes(path, atime, mtime, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.utimes(path, atime, mtime, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
@@ -755,11 +660,8 @@ export const watchFile = (filename, options, listener) => (
 // fs.write(fd, data[, position[, encoding]], callback)
 
 export const write = (fd, data, v1, v2, v3) => (
-  new Promise((success, failure) => {
-    const c = (e) => {
-      if (!e) return success()
-      failure(e)
-    }
+  new Promise((resolve, reject) => {
+    const c = (e) => (!e) ? resolve() : reject(e)
     if (data instanceof Buffer) {
       fs.write(fd, data, v1, v2, v3, c)
     } else {
@@ -772,21 +674,18 @@ export const write = (fd, data, v1, v2, v3) => (
 // fs.writeFileSync(file, data[, options])
 
 export const writeFile = (file, data, options) => (
-  new Promise((success, failure) => {
-    fs.writeFile(file, data, options, (e) => {
-      if (!e) return success()
-      failure(e)
-    })
+  new Promise((resolve, reject) => {
+    fs.writeFile(file, data, options, (e) => (!e) ? resolve() : reject(e))
   })
 )
 
 export const writeFileSync = (file, data, options) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     try {
-      success(
+      resolve(
         fs.writeFileSync(file, data, options))
     } catch (e) {
-      failure(e)
+      reject(e)
     }
   })
 )
@@ -795,7 +694,7 @@ export const writeFileSync = (file, data, options) => (
 // fs.writeSync(fd, data[, position[, encoding]])
 
 export const writeSync = (fd, data, v1, v2, v3) => (
-  new Promise((success, failure) => {
+  new Promise((resolve, reject) => {
     if (data instanceof Buffer) {
       fs.writeSync(fd, data, v1, v2, v3)
     } else {
