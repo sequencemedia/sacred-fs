@@ -1,6 +1,6 @@
 {
   "name": "sacred-fs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Promise interface to Node FS",
   "keywords": [
     "promise",
@@ -96,7 +96,7 @@
     "type": "git",
     "url": "git+https://github.com/sequencemedia/SacredFS.git"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
