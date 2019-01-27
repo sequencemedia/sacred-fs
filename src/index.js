@@ -105,6 +105,27 @@ export const closeSync = (fd) => (
   })
 )
 
+// fs.copyFile(path, mode, callback)
+
+export const copyFile = (src, dest, flags) => (
+  new Promise((resolve, reject) => {
+    fs.copyFile(src, dest, flags, (e) => (!e) ? resolve() : reject(e))
+  })
+)
+
+// fs.copyFileSync(path, mode)
+
+export const copyFileSync = (src, dest, flags) => (
+  new Promise((resolve, reject) => {
+    try {
+      resolve(
+        fs.copyFileSync(src, dest, flags))
+    } catch (e) {
+      reject(e)
+    }
+  })
+)
+
 // fs.createReadStream(path[, options])
 
 export const createReadStream = (path, options) => (
@@ -439,7 +460,7 @@ export const readSync = (fd, buffer, offset, length, position) => (
 
 export const readdir = (path, options) => (
   new Promise((resolve, reject) => {
-    fs.read(path, options, (e) => (!e) ? resolve() : reject(e))
+    fs.readdir(path, options, (e, files) => (!e) ? resolve(files) : reject(e))
   })
 )
 
