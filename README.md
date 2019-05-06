@@ -1,6 +1,6 @@
 # Sacred FS
 
-**All** of the methods of the Node package `fs` in ES2015 and exposed as Promises.
+**All** of the methods of the Node package `fs` exposed as Promises.
 
 
 ## Writing a File to the File System
