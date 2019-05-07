@@ -84,13 +84,14 @@
     "writeSync"
   ],
   "main": "./index.js",
-  "engines": {
-    "node": ">=8.5.0"
-  },
   "scripts": {
-    "build": "babel src -d lib",
-    "prepublish": "npm run build",
-    "lint": "eslint src"
+    "build": "npm run babel",
+    "clean": "bash clean.sh",
+    "babel": "babel src -d lib",
+    "prepublishOnly": "npm run build",
+    "prepare": "npm run build",
+    "lint": "eslint *.js src",
+    "lint:fix": "npm run lint -- --fix"
   },
   "author": {
     "name": "Jonathan Perry for Sequence Media Limited",
@@ -103,14 +104,17 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
     "babel-eslint": "^10.0.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1",
+    "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
     "eslint-plugin-promise": "^4.1.1",
-    "standard": "^12.0.1"
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^2.2.0"
   }
 }
