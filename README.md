@@ -2,34 +2,32 @@
 
 **All** of the methods of the Node package `fs` exposed as Promises.
 
-
 ## Writing a File to the File System
 
-
 ```
-import { 
-  writeFile 
+import {
+  writeFile
 } from 'sacred-fs'
 
 const filePath = '/path/to/file.txt'
 const fileData = 'Hello, World!'
 
 writeFile(filePath, fileData)
-	.then(() => console.log('Written!')
+	.then(() => console.log('Written!'))
 	.catch((e) => console.error(e))
 ```
 
 ## Reading a File from the File System
 
 ```
-import { 
-  readFile 
+import {
+  readFile
 } from 'sacred-fs'
 
 const filePath = '/path/to/file.txt'
 
 readFile(filePath)
-	.then((fileData) => console.log('Read!', fileData)
+	.then((fileData) => console.log('Read!', fileData))
 	.catch((e) => console.error(e))
 ```
 
