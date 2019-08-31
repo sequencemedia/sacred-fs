@@ -1,0 +1,6 @@
+.eslintignore
+.eslintrc
+
+.gitignore
+
+clean.sh
