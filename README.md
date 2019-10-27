@@ -13,8 +13,8 @@ const filePath = '/path/to/file.txt'
 const fileData = 'Hello, World!'
 
 writeFile(filePath, fileData)
-	.then(() => console.log('Written!'))
-	.catch((e) => console.error(e))
+  .then(() => console.log('Written!'))
+  .catch((e) => console.error(e))
 ```
 
 ## Reading a File from the File System
@@ -27,8 +27,8 @@ import {
 const filePath = '/path/to/file.txt'
 
 readFile(filePath)
-	.then((fileData) => console.log('Read!', fileData))
-	.catch((e) => console.error(e))
+  .then((fileData) => console.log('Read!', fileData))
+  .catch((e) => console.error(e))
 ```
 
 ## All of the methods of the Node package FS
