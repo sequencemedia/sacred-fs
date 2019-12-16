@@ -1,6 +1,6 @@
 {
   "name": "sacred-fs",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Promise interface to Node FS",
   "keywords": [
     "promise",
