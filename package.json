@@ -90,6 +90,9 @@
     "url": "http://sequencemedia.net"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=12.18.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sequencemedia/sacred-fs.git"
