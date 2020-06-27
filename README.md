@@ -1,10 +1,10 @@
 # Sacred FS
 
-**All** of the methods of the Node package `fs` exposed as Promises.
+All of the methods of the Node package `fs` exposed as Promises.
 
 ## Writing a File to the File System
 
-```
+```javascript
 import {
   writeFile
 } from 'sacred-fs'
@@ -19,7 +19,7 @@ writeFile(filePath, fileData)
 
 ## Reading a File from the File System
 
-```
+```javascript
 import {
   readFile
 } from 'sacred-fs'
