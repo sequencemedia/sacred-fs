@@ -716,10 +716,16 @@ export const writeFileSync = (file, data, options) => (
 
 export const writeSync = (fd, data, v1, v2, v3) => (
   new Promise((resolve, reject) => {
-    if (data instanceof Buffer) {
-      fs.writeSync(fd, data, v1, v2, v3)
-    } else {
-      fs.writeSync(fd, data, v1, v2)
+    try {
+      if (data instanceof Buffer) {
+        resolve(
+          fs.writeSync(fd, data, v1, v2, v3))
+      } else {
+        resolve(
+          fs.writeSync(fd, data, v1, v2))
+      }
+    } catch (e) {
+      reject(e)
     }
   })
 )
