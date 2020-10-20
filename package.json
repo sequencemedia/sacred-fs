@@ -84,6 +84,7 @@
     "writeSync"
   ],
   "main": "./index.js",
+  "types": "./types/index.d.ts",
   "author": {
     "name": "Jonathan Perry for Sequence Media Limited",
     "email": "sequencemedia@sequencemedia.net",
