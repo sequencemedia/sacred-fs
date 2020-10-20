@@ -402,19 +402,19 @@ export const mkdirSync = (path, mode) => (
 
 // fs.mkdtemp(prefix, callback)
 
-export const mkdtemp = (prefix) => (
+export const mkdtemp = (prefix, options) => (
   new Promise((resolve, reject) => {
-    fs.mkdtemp(prefix, (e, folder) => (!e) ? resolve(folder) : reject(e))
+    fs.mkdtemp(prefix, options, (e, folder) => (!e) ? resolve(folder) : reject(e))
   })
 )
 
 // fs.mkdtempSync(prefix)
 
-export const mkdtempSync = (prefix) => (
+export const mkdtempSync = (prefix, options) => (
   new Promise((resolve, reject) => {
     try {
       resolve(
-        fs.mkdtempSync(prefix))
+        fs.mkdtempSync(prefix, options))
     } catch (e) {
       reject(e)
     }
