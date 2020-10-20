@@ -311,7 +311,9 @@ export function writeFileSync (file: string, data: string | Buffer, options?: st
 // fs.writeSync(fd, buffer, offset, length[, position])
 // fs.writeSync(fd, data[, position[, encoding]])
 
-// TODO export function writeSync (fd: string, v1: string | Buffer, v2?: number, v3?: number | string, v4?: number): Promise<void>
+export function writeSync (fd: number, buffer: string | object | Buffer, offset?: number, length?: number, position?: number): Promise<void>
+
+export function writeSync (fd: number, data: string | object, position?: number, encoding?: number): Promise<void>
 
 // File Access Constants
 
