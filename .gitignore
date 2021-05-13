@@ -39,3 +39,9 @@ pids
 # Build Folders
 coverage/
 npm-debug.log*
+
+# User-defined NPM configuration
+.npmrc
+
+# User-defined NVM configuration
+.nvmrc
