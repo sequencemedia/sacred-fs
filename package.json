@@ -109,12 +109,12 @@
     "pre-commit": "npm run lint && npm run build && git add lib"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.4",
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
-    "@babel/eslint-parser": "^7.15.4",
+    "@babel/eslint-parser": "^7.15.7",
     "@babel/preset-env": "^7.15.6",
     "@babel/register": "^7.15.3",
-    "@types/node": "^16.9.2",
+    "@types/node": "^16.9.3",
     "eslint": "^7.32.0",
     "husky": "^7.0.2",
     "rimraf": "^3.0.2",
