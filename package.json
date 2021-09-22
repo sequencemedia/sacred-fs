@@ -1,6 +1,6 @@
 {
   "name": "sacred-fs",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Promise interface to Node FS",
   "keywords": [
     "promise",
@@ -106,7 +106,8 @@
     "prebuild": "npm run clean",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "pre-commit": "npm run lint && npm run build && git add lib"
+    "gulp": "gulp --color",
+    "pre-commit": "npm run lint && npm run build && git add lib && npm run gulp -- pre-commit"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
@@ -120,6 +121,7 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
+    "gulp": "^4.0.2",
     "husky": "^7.0.2",
     "rimraf": "^3.0.2"
   }
