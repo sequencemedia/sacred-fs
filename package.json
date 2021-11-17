@@ -1,6 +1,6 @@
 {
   "name": "sacred-fs",
-  "version": "1.2.40",
+  "version": "1.2.41",
   "description": "Promise interface to Node FS",
   "keywords": [
     "promise",
@@ -113,7 +113,7 @@
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/eslint-parser": "^7.16.3",
-    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
     "@babel/register": "^7.16.0",
     "@types/node": "^16.11.7",
     "eslint": "^8.2.0",
