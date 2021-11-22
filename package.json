@@ -1,6 +1,6 @@
 {
   "name": "sacred-fs",
-  "version": "1.2.47",
+  "version": "1.2.48",
   "description": "Promise interface to Node FS",
   "keywords": [
     "promise",
@@ -92,7 +92,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=12.19.0"
+    "node": ">=16.13.0"
   },
   "repository": {
     "type": "git",
