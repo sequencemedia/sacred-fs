@@ -146,21 +146,21 @@ fs.constants
 
 /*
  *  Deprecated
- */
+ */ /*
 export const exists = (path) => (
   new Promise((resolve) => {
     fs.exists(path, resolve)
   })
-)
+) */
 
 // fs.existsSync(path)
 
 /*
  *  Deprecated
- */
+ */ /*
 export const existsSync = (path) => (
   Promise.resolve(fs.existsSync(path))
-)
+) */
 
 // fs.fchmod(fd, mode, callback)
 
@@ -304,14 +304,20 @@ export const futimesSync = (fd, atime, mtime) => (
 
 // fs.lchmod(path, mode, callback)
 
+/*
+ *  Deprecated
+ */ /*
 export const lchmod = (path, mode) => (
   new Promise((resolve, reject) => {
     fs.lchmod(path, mode, (e) => (!e) ? resolve() : reject(e))
   })
-)
+) */
 
 // fs.lchmodSync(path, mode)
 
+/*
+ *  Deprecated
+ */ /*
 export const lchmodSync = (path, mode) => (
   new Promise((resolve, reject) => {
     try {
@@ -321,7 +327,7 @@ export const lchmodSync = (path, mode) => (
       reject(e)
     }
   })
-)
+) */
 
 // fs.lchown(path, mode, callback)
 
